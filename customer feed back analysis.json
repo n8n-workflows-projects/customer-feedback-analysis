@@ -1,0 +1,1605 @@
+{
+  "name": "customer feed back analysis",
+  "nodes": [
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1EXGjwQzrvq55UNSNqNyu6xqnv6fEIkuOID7RNM9wwxI",
+          "mode": "list",
+          "cachedResultName": "customer feedback analyzer",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1EXGjwQzrvq55UNSNqNyu6xqnv6fEIkuOID7RNM9wwxI/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "all feedback",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1EXGjwQzrvq55UNSNqNyu6xqnv6fEIkuOID7RNM9wwxI/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        208,
+        0
+      ],
+      "id": "cec65999-f6aa-4096-a1c4-7f13d54ed8a9",
+      "name": "Get row(s) in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "nWxKoPNhLKKV7xc6",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "18db881f-883c-4dc3-94bc-6c12e1216912",
+              "leftValue": "={{ $json.Rating }}",
+              "rightValue": 2,
+              "operator": {
+                "type": "number",
+                "operation": "lte"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        416,
+        0
+      ],
+      "id": "012ab234-ac03-4768-87e1-80dfc3b55aca",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1EXGjwQzrvq55UNSNqNyu6xqnv6fEIkuOID7RNM9wwxI",
+          "mode": "list",
+          "cachedResultName": "customer feedback analyzer",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1EXGjwQzrvq55UNSNqNyu6xqnv6fEIkuOID7RNM9wwxI/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 348223629,
+          "mode": "list",
+          "cachedResultName": "negative reviws",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1EXGjwQzrvq55UNSNqNyu6xqnv6fEIkuOID7RNM9wwxI/edit#gid=348223629"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {
+            "Customer Name": "={{ $json['Customer Name'] }}",
+            "Product": "={{ $json.Product }}",
+            "Rating": "={{ $json.Rating }}",
+            "Feedback": "={{ $json.Feedback }}",
+            "City": "={{ $json.City }}",
+            "Feedback ID": "={{ $json['Feedback ID'] }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Feedback ID",
+              "displayName": "Feedback ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Customer Name",
+              "displayName": "Customer Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Product",
+              "displayName": "Product",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Rating",
+              "displayName": "Rating",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Feedback",
+              "displayName": "Feedback",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "City",
+              "displayName": "City",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "timestamp",
+              "displayName": "timestamp",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Readable date",
+              "displayName": "Readable date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Readable time",
+              "displayName": "Readable time",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Day of week",
+              "displayName": "Day of week",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Year",
+              "displayName": "Year",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Month",
+              "displayName": "Month",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Day of month",
+              "displayName": "Day of month",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Hour",
+              "displayName": "Hour",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Minute",
+              "displayName": "Minute",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Second",
+              "displayName": "Second",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Timezone",
+              "displayName": "Timezone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        880,
+        -96
+      ],
+      "id": "df21a7b8-b09f-4288-acad-fcd635fa45f8",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "nWxKoPNhLKKV7xc6",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1EXGjwQzrvq55UNSNqNyu6xqnv6fEIkuOID7RNM9wwxI",
+          "mode": "list",
+          "cachedResultName": "customer feedback analyzer",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1EXGjwQzrvq55UNSNqNyu6xqnv6fEIkuOID7RNM9wwxI/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 11435874,
+          "mode": "list",
+          "cachedResultName": "positive reviews",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1EXGjwQzrvq55UNSNqNyu6xqnv6fEIkuOID7RNM9wwxI/edit#gid=11435874"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {
+            "Customer Name": "={{ $json['Customer Name'] }}",
+            "Product": "={{ $json.Product }}",
+            "Rating": "={{ $json.Rating }}",
+            "Feedback": "={{ $json.Feedback }}",
+            "City": "={{ $json.City }}",
+            "Feedback ID": "={{ $json['Feedback ID'] }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Feedback ID",
+              "displayName": "Feedback ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Customer Name",
+              "displayName": "Customer Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Product",
+              "displayName": "Product",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Rating",
+              "displayName": "Rating",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Feedback",
+              "displayName": "Feedback",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "City",
+              "displayName": "City",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "timestamp",
+              "displayName": "timestamp",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Readable date",
+              "displayName": "Readable date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Readable time",
+              "displayName": "Readable time",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Day of week",
+              "displayName": "Day of week",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Year",
+              "displayName": "Year",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Month",
+              "displayName": "Month",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Day of month",
+              "displayName": "Day of month",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Hour",
+              "displayName": "Hour",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Minute",
+              "displayName": "Minute",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Second",
+              "displayName": "Second",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Timezone",
+              "displayName": "Timezone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        832,
+        96
+      ],
+      "id": "035a10a4-2cc1-46b5-8e64-c7496a386d10",
+      "name": "Append row in sheet1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "nWxKoPNhLKKV7xc6",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sortFieldsUi": {
+          "sortField": [
+            {
+              "fieldName": "Rating"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.sort",
+      "typeVersion": 1,
+      "position": [
+        640,
+        -64
+      ],
+      "id": "ab7c7db5-bdbb-43a7-b789-ba14389e3920",
+      "name": "Sort"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        1200,
+        0
+      ],
+      "id": "20905b48-71eb-4d72-bf3e-df074c6ae16a",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "sortFieldsUi": {
+          "sortField": [
+            {
+              "fieldName": "Product"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.sort",
+      "typeVersion": 1,
+      "position": [
+        1344,
+        240
+      ],
+      "id": "545ce107-b601-4f5b-ac62-e7509479b7d4",
+      "name": "Sort1"
+    },
+    {
+      "parameters": {
+        "maxItems": 10
+      },
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        1552,
+        240
+      ],
+      "id": "39f2ed8e-b28f-4066-8364-7262ad288c70",
+      "name": "Limit"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.Rating }}",
+                    "rightValue": 1,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    },
+                    "id": "4ca6b47e-4e38-484e-8c79-8b0ee90051d5"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "1 rating"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "d9c6c9e3-0de1-4b72-b325-5743448794b2",
+                    "leftValue": "={{ $json.Rating }}",
+                    "rightValue": 2,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "2 rating"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "9214fbb2-e0c3-436b-8e4d-84396e48ade7",
+                    "leftValue": "={{ $json.Rating }}",
+                    "rightValue": 3,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "3 rating"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "52e8b697-5857-4449-a43d-204514efa6ec",
+                    "leftValue": "={{ $json.Rating }}",
+                    "rightValue": 4,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "4 rating"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "0d484f90-4f81-4f6f-9a1d-1e71d3696e02",
+                    "leftValue": "={{ $json.Rating }}",
+                    "rightValue": 5,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": " 5 rating"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        1472,
+        -16
+      ],
+      "id": "d736b945-6c97-40e7-af7a-67093ce976f8",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1l_pdPLvSGohT6Hvg7My5QFyF1y4-yZQbQ-TvqBxaJOk",
+          "mode": "list",
+          "cachedResultName": "rating saparation",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1l_pdPLvSGohT6Hvg7My5QFyF1y4-yZQbQ-TvqBxaJOk/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "1 rating",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1l_pdPLvSGohT6Hvg7My5QFyF1y4-yZQbQ-TvqBxaJOk/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1776,
+        -160
+      ],
+      "id": "565736ff-f3c5-4eae-96db-77620ff44520",
+      "name": "Append row in sheet2",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "nWxKoPNhLKKV7xc6",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1l_pdPLvSGohT6Hvg7My5QFyF1y4-yZQbQ-TvqBxaJOk",
+          "mode": "list",
+          "cachedResultName": "rating saparation",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1l_pdPLvSGohT6Hvg7My5QFyF1y4-yZQbQ-TvqBxaJOk/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 365485414,
+          "mode": "list",
+          "cachedResultName": "2 rating",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1l_pdPLvSGohT6Hvg7My5QFyF1y4-yZQbQ-TvqBxaJOk/edit#gid=365485414"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        2000,
+        -64
+      ],
+      "id": "d2a94353-7a38-44eb-bed4-a383a5a45f64",
+      "name": "Append row in sheet3",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "nWxKoPNhLKKV7xc6",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1l_pdPLvSGohT6Hvg7My5QFyF1y4-yZQbQ-TvqBxaJOk",
+          "mode": "list",
+          "cachedResultName": "rating saparation",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1l_pdPLvSGohT6Hvg7My5QFyF1y4-yZQbQ-TvqBxaJOk/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 2137664822,
+          "mode": "list",
+          "cachedResultName": "3 rating",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1l_pdPLvSGohT6Hvg7My5QFyF1y4-yZQbQ-TvqBxaJOk/edit#gid=2137664822"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        2224,
+        32
+      ],
+      "id": "be779b22-e2db-4a19-ae13-07aafcf4a7c3",
+      "name": "Append row in sheet4",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "nWxKoPNhLKKV7xc6",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1l_pdPLvSGohT6Hvg7My5QFyF1y4-yZQbQ-TvqBxaJOk",
+          "mode": "list",
+          "cachedResultName": "rating saparation",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1l_pdPLvSGohT6Hvg7My5QFyF1y4-yZQbQ-TvqBxaJOk/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 2065305395,
+          "mode": "list",
+          "cachedResultName": "4 rating",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1l_pdPLvSGohT6Hvg7My5QFyF1y4-yZQbQ-TvqBxaJOk/edit#gid=2065305395"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        2032,
+        144
+      ],
+      "id": "8867cc17-ea04-46e1-bab7-ba65d4d7c585",
+      "name": "Append row in sheet5",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "nWxKoPNhLKKV7xc6",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1l_pdPLvSGohT6Hvg7My5QFyF1y4-yZQbQ-TvqBxaJOk",
+          "mode": "list",
+          "cachedResultName": "rating saparation",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1l_pdPLvSGohT6Hvg7My5QFyF1y4-yZQbQ-TvqBxaJOk/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 542053898,
+          "mode": "list",
+          "cachedResultName": "5 rating",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1l_pdPLvSGohT6Hvg7My5QFyF1y4-yZQbQ-TvqBxaJOk/edit#gid=542053898"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        2080,
+        304
+      ],
+      "id": "23f83ae2-c08b-4a3d-912f-84fbedc18c95",
+      "name": "Append row in sheet6",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "nWxKoPNhLKKV7xc6",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "let totalFeedback = items.length;\nlet positiveFeedback = 0;\nlet negativeFeedback = 0;\n\nlet totalRating = 0;\nlet minRating = Infinity;\nlet maxRating = -Infinity;\n\nfor (const item of items) {\n  const rating = Number(item.json.Rating);\n\n  totalRating += rating;\n\n  if (rating >= 3) {\n    positiveFeedback++;\n  } else {\n    negativeFeedback++;\n  }\n\n  if (rating < minRating) {\n    minRating = rating;\n  }\n\n  if (rating > maxRating) {\n    maxRating = rating;\n  }\n}\n\nconst averageRating = Number((totalRating / totalFeedback).toFixed(2));\n\nreturn [\n  {\n    json: {\n      total_feedback: totalFeedback,\n      positive_feedback: positiveFeedback,\n      negative_feedback: negativeFeedback,\n      average_rating: averageRating,\n      min_rating: minRating,\n      max_rating: maxRating\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1360,
+        -240
+      ],
+      "id": "41226384-85f7-49c4-b729-954935dbf45a",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "sendTo": "bhoominigokam9@gmail.com",
+        "subject": "Daily Customer Feedback Report",
+        "emailType": "text",
+        "message": "=Hello Customer Support Team,\n\nThe daily customer feedback analysis has been completed successfully.\n\nFeedback Summary\n\n• Total Feedback : {{ $json.total_feedback }}\n\n• Positive Feedback : {{ $json.positive_feedback }}\n\n• Negative Feedback : {{ $json.negative_feedback }}\n\n• Average Rating : {{ $json.average_rating }}\n\n• Highest Rating : {{ $json.max_rating }}\n\n• Lowest Rating : {{ $json.min_rating }}\n\n\nThe positive and negative feedback have been saved into separate Google Sheets.\n\nPlease review the negative feedback and contact customers if necessary.\n\nRegards,\n\nCustomer care.",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        1568,
+        -240
+      ],
+      "id": "f9fe80a5-3d20-4d30-a272-f1b216d8fe9e",
+      "name": "Send a message1",
+      "webhookId": "cf307799-249e-484c-8830-09e2b6bb9ef9",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "spAMfrkQvbMRDGk4",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1EXGjwQzrvq55UNSNqNyu6xqnv6fEIkuOID7RNM9wwxI",
+          "mode": "list",
+          "cachedResultName": "customer feedback analyzer",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1EXGjwQzrvq55UNSNqNyu6xqnv6fEIkuOID7RNM9wwxI/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 2087552301,
+          "mode": "list",
+          "cachedResultName": "summary details",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1EXGjwQzrvq55UNSNqNyu6xqnv6fEIkuOID7RNM9wwxI/edit#gid=2087552301"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Total Feedback": "={{ $json.total_feedback }}",
+            "Positive Feedback Count": "={{ $json.positive_feedback }}",
+            "Negative Feedback Count": "={{ $json.negative_feedback }}",
+            "Average Rating": "={{ $json.average_rating }}",
+            "Highest Rating": "={{ $json.max_rating }}",
+            "lowest  Rating": "={{ $json.min_rating }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Total Feedback",
+              "displayName": "Total Feedback",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Positive Feedback Count",
+              "displayName": "Positive Feedback Count",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Negative Feedback Count",
+              "displayName": "Negative Feedback Count",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Average Rating",
+              "displayName": "Average Rating",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Highest Rating",
+              "displayName": "Highest Rating",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "lowest  Rating",
+              "displayName": "lowest  Rating",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1568,
+        -400
+      ],
+      "id": "d6bb4fdf-c9c3-4e3f-a554-480d74767867",
+      "name": "Append row in sheet7",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "nWxKoPNhLKKV7xc6",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldsToSummarize": {
+          "values": [
+            {
+              "field": "Feedback"
+            }
+          ]
+        },
+        "fieldsToSplitBy": "Product",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.summarize",
+      "typeVersion": 1.1,
+      "position": [
+        1216,
+        400
+      ],
+      "id": "b22b9f3d-1ff9-45c5-b687-7f74d96e7f64",
+      "name": "Summarize"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1l_pdPLvSGohT6Hvg7My5QFyF1y4-yZQbQ-TvqBxaJOk",
+          "mode": "list",
+          "cachedResultName": "rating saparation",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1l_pdPLvSGohT6Hvg7My5QFyF1y4-yZQbQ-TvqBxaJOk/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1132094989,
+          "mode": "list",
+          "cachedResultName": "count of feedback for each product",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1l_pdPLvSGohT6Hvg7My5QFyF1y4-yZQbQ-TvqBxaJOk/edit#gid=1132094989"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "cunt of feedback": "={{ $json.count_Feedback }}",
+            "product": "={{ $json.Product }}"
+          },
+          "matchingColumns": [
+            "cunt of feedback"
+          ],
+          "schema": [
+            {
+              "id": "product",
+              "displayName": "product",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "cunt of feedback",
+              "displayName": "cunt of feedback",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1424,
+        400
+      ],
+      "id": "94725d64-1fb1-42de-b6ff-32f15242b516",
+      "name": "Append row in sheet8",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "nWxKoPNhLKKV7xc6",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1EXGjwQzrvq55UNSNqNyu6xqnv6fEIkuOID7RNM9wwxI",
+          "mode": "list",
+          "cachedResultName": "customer feedback analyzer",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1EXGjwQzrvq55UNSNqNyu6xqnv6fEIkuOID7RNM9wwxI/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 794126972,
+          "mode": "list",
+          "cachedResultName": "lowest rated products top 10",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1EXGjwQzrvq55UNSNqNyu6xqnv6fEIkuOID7RNM9wwxI/edit#gid=794126972"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Customer Name",
+              "displayName": "Customer Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Product",
+              "displayName": "Product",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Rating",
+              "displayName": "Rating",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Feedback",
+              "displayName": "Feedback",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "City",
+              "displayName": "City",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Feedback ID",
+              "displayName": "Feedback ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1728,
+        288
+      ],
+      "id": "8f9373c3-6318-4923-8b45-ec2d24d08064",
+      "name": "Append row in sheet9",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "nWxKoPNhLKKV7xc6",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 9
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -432,
+        0
+      ],
+      "id": "0808c529-c4fd-458d-a659-1bfcdb575760",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1EXGjwQzrvq55UNSNqNyu6xqnv6fEIkuOID7RNM9wwxI",
+          "mode": "list",
+          "cachedResultName": "customer feedback analyzer",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1EXGjwQzrvq55UNSNqNyu6xqnv6fEIkuOID7RNM9wwxI/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "all feedback",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1EXGjwQzrvq55UNSNqNyu6xqnv6fEIkuOID7RNM9wwxI/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [
+            "Feedback ID"
+          ],
+          "schema": [
+            {
+              "id": "Feedback ID",
+              "displayName": "Feedback ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Customer Name",
+              "displayName": "Customer Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Product",
+              "displayName": "Product",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Rating",
+              "displayName": "Rating",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Feedback",
+              "displayName": "Feedback",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "City",
+              "displayName": "City",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -64,
+        0
+      ],
+      "id": "18953a72-9665-4fd3-b438-f1f660a3a691",
+      "name": "Update row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "nWxKoPNhLKKV7xc6",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Get row(s) in sheet": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Sort",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Append row in sheet1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sort": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Sort1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Summarize",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sort1": {
+      "main": [
+        [
+          {
+            "node": "Limit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Append row in sheet3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Append row in sheet4",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Append row in sheet5",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Append row in sheet6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Send a message1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Append row in sheet7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Summarize": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Update row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update row in sheet": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false,
+    "timeSavedMode": "fixed",
+    "callerPolicy": "workflowsFromSameOwner",
+    "executionTimeout": -1
+  },
+  "versionId": "17573858-a543-4ba9-91cd-741b0ca2a759",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "9a7dce7f5862a86b54106ae3b7fae81da837e6bc8dd2c16b964705cdf9486f6b"
+  },
+  "nodeGroups": [],
+  "id": "sb3BEDFeuHcASpWp",
+  "tags": []
+}
